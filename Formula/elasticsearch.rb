@@ -28,7 +28,7 @@ class Elasticsearch < Formula
 
     # Move config files into etc
     (etc/"elasticsearch").install Dir[libexec/"config/*"]
-    (libexec/"config").rm_r
+    FileUtils.rm_r(libexec/"config")
 
     inreplace libexec/"bin/elasticsearch-env",
               "if [ -z \"$ES_PATH_CONF\" ]; then ES_PATH_CONF=\"$ES_HOME\"/config; fi",
